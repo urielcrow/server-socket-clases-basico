@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Chat</h1>
+
+    <button id="btn">Llamar server</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+
+    <script>
+        const socket = io('http://localhost:3000/');
+
+        // socket.on('welcome-client',(resp)=>{
+        //     console.log(resp)
+        // });
+
+        const btn = document.getElementById('btn');
+
+        btn.onclick = ()=>{
+            socket.emit('list-client',"que pedo server",(resp)=>{
+                console.log(resp)
+            });
+        }
+
+        socket.on('from-server',(resp)=>{
+            console.log(resp)
+        });
+
+    </script>
+
+</body>
+</html>
