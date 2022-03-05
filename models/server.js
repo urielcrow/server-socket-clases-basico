@@ -11,7 +11,7 @@ class Server{
         this.app = express();
         this.port = process.env.PORT;
         this.server = http.createServer(this.app);
-        this.io = socketio(this.server,{cors: {//los cors en los sockets los manejamos directamente
+        this.io = socketio(this.server,{ cors: {//los cors en los sockets los manejamos directamente
             origin: "*",
             methods: ["GET", "POST"]
           }});
